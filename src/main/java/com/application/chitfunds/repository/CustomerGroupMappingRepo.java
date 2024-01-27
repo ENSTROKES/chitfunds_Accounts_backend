@@ -8,4 +8,5 @@ import com.application.chitfunds.entites.CustomerGroupMapping;
 
 public interface CustomerGroupMappingRepo extends MongoRepository<CustomerGroupMapping, String>{
 	List<CustomerGroupMapping> findByGroupId(String groupId);
+	List<CustomerGroupMapping> findByCustomerId(String customerId);
 }

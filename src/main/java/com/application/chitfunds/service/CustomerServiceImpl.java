@@ -432,4 +432,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
+	@Override
+	public List<CustomerGroupMapping> getMappedGroupListByCutomerId(String customerId) {
+		List<CustomerGroupMapping> mapList = mapRepo.findByCustomerId(customerId);
+		return mapList;
+	}
+
 }

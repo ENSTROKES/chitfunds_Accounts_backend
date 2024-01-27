@@ -536,4 +536,19 @@ public class CustomerController {
 		}
 		return res;
 	}
+	
+	@GetMapping("/getChitListByCustomerId")
+	public Response getChitListByCustomerId(@RequestParam String customerId) {
+		Response res = new Response();
+		List<CustomerGroupMapping> listOfMappedData = custService.getMappedGroupListByCutomerId(customerId);
+		if (listOfMappedData != null) {
+			res.setResponseCode(200);
+			res.setObject(listOfMappedData);
+		} else {
+			res.setResponseCode(201);
+			res.setResponseMessage("Customer not mapped with any group/chit");
+		}
+		return res;
+	}
+	
 }

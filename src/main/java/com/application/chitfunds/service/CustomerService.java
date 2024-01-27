@@ -27,5 +27,7 @@ public interface CustomerService {
     public Resource loadFile(String fileName);
 	public List<CustomerGroupMapping> getMappedCustomerByGroupAndCustomerId(String groupId, String customerId, String ticketNum );
 	public List<Customers> getCustomerBySlabDetails(String slabId);
+	
+	public  List<CustomerGroupMapping> getMappedGroupListByCutomerId(String customerId);
 
 }
