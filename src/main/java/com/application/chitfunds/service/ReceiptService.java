@@ -18,6 +18,7 @@ public interface ReceiptService{
 	public List<Receipt> getAllReceiptList(Request req);
 	public Receipt getReceiptById(String id);
 	public Boolean createReceipt(Receipt receipt);
+	public Boolean updateReceipt(Receipt receipt);
 	public Boolean deleteReceipt(String id);
 	public List<Receipt> getReceiptByGroupandCustomer(String custId, String groupId);
 	public List<Receipt> getReceiptByCustomerId(String id);

@@ -349,6 +349,31 @@ Query query = new Query();
 	}
 		return ledgerList;
 	}
+
+	@Override
+	public Boolean updateReceipt(Receipt recpt) {
+
+		Receipt receipt = recpt;
+		try {
+			if(receipt.getrId()==null) {
+				receipt.setrId(sequenceGenerator.generateSequence(Constant.RECEIPT_SEQUENCE));
+			}
+
+			receipt.setCreatedDate(new Date().getTime());
+			receipt.setLastUpdatedDate(new Date().getTime());
+			Receipt result = repo.save(receipt);
+			if (result != null)
+				return true;
+			else
+				return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error During save receipt: " + e.getMessage());
+			return false;
+		}
+	
+	}
 	
 	
 	
