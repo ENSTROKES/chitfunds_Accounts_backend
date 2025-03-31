@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.application.chitfunds.entites.DocumentsModel;
 
-public interface DocumentRepo extends MongoRepository<DocumentsModel, String>{
+public interface DocumentRepo extends MongoRepository<DocumentsModel, Long>{
 	Optional<DocumentsModel> findByName(String name);
 	Optional<List<DocumentsModel>> findByCustomerId(Long customerId);
 }

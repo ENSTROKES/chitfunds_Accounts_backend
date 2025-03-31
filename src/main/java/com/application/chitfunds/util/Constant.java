@@ -18,6 +18,7 @@ public class Constant {
 	public static String COLLECTION_ROUTE_SEQUENCE= "collectionRoute";
 	public static String BRANCH = "branch";
 	public static String ROUTE="route";
+	public static String TEMP_GROUP_SEQUENCE= "TemporaryGroup";
 }
 
 
