@@ -16,7 +16,9 @@ import com.application.chitfunds.SequenceGenerator;
 import com.application.chitfunds.entites.TemporaryGroup;
 import com.application.chitfunds.entites.TemporaryGroupMapping;
 import com.application.chitfunds.entites.Request;
+import com.application.chitfunds.entites.SlabsEntity;
 import com.application.chitfunds.repository.TemporaryGroupRepo;
+import com.application.chitfunds.repository.SlabsRepo;
 import com.application.chitfunds.repository.TemporaryGroupMappingRepo;
 import com.application.chitfunds.util.Constant;
 
@@ -34,6 +36,9 @@ public class TemporaryGroupServiceImpl implements TemporaryGroupService {
 
     @Autowired
     private SequenceGenerator sequenceGenerator;
+    
+    @Autowired
+	SlabsRepo slabRepo;
 
     @Override
     public List<TemporaryGroup> getAllTemporaryGroups() {
@@ -146,4 +151,42 @@ public class TemporaryGroupServiceImpl implements TemporaryGroupService {
             return false;
         }
     }
+    
+    @Override
+	public Boolean createSlab(SlabsEntity s) {
+		SlabsEntity slab = s;
+		try {
+			if(slab.getSlabId()==null) {
+				slab.setSlabId(sequenceGenerator.generateSequence(Constant.SLAB_SEQUENCE));
+			}
+			slab.setCreatedDate(new Date().getTime());
+			slab.setUpdatedDate(new Date().getTime());
+			SlabsEntity result = slabRepo.save(slab);
+			if (result != null)
+				return true;
+			else
+				return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error During save Group: " + e.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	public List<SlabsEntity> getAllSlabs() {
+		List<SlabsEntity> slbList = slabRepo.findAll();
+		return slbList;
+	}
+	
+	@Override
+	public SlabsEntity findSlabById(String id) {
+		Optional<SlabsEntity> slbList = slabRepo.findById(id);
+		if (slbList.isPresent())
+			return slbList.get();
+		else
+			return null;
+		
+	}
 }
