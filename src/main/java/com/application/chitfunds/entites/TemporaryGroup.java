@@ -2,7 +2,7 @@ package com.application.chitfunds.entites;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "temporary_group")
+@Document(collection = "temporaryGroup")
 public class TemporaryGroup {
 
     private Long groupId;
